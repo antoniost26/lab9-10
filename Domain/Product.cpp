@@ -57,7 +57,7 @@ void Product::setPrice(double _price) {
 
 bool Product::operator==(const Product &product) const {
     return (this->id == product.id && this->name == product.name &&
-            this->price == product.price);
+            this->price == product.price && this->quantity == product.quantity);
 }
 
 bool Product::operator!=(const Product &product) const {

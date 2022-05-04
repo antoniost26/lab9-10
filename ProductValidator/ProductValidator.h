@@ -12,16 +12,34 @@
 class ProductValidator {
 private:
     Product product;
-    IRepo<Product>& repo;
+    IRepo<Product> &repo;
 public:
-    explicit ProductValidator(IRepo<Product>& _repo) : repo{_repo} {};
+    /**
+     * Constructor
+     * @param _repo product repository
+     */
+    explicit ProductValidator(IRepo<Product> &_repo) : repo{_repo} {};
 
+    /**
+     * Validates a product
+     */
     void validate();
 
-    void setProduct(Product other) {this->product = other;};
+    /**
+     * Sets the product
+     * @param other a product
+     */
+    void setProduct(Product other) { this->product = other; };
 
+    /**
+     * Checks to see if the product exists in the repository
+     * @return true if it exists, false otherwise
+     */
     bool doesExit();
 
+    /**
+     * Validates the product's name, price and quantity
+     */
     void update();
 };
 

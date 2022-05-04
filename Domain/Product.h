@@ -19,6 +19,10 @@ public:
      */
     Product();
 
+    /**
+     * Constructor
+     * @param args arguments
+     */
     Product(std::string args);
 
     /**
@@ -154,8 +158,16 @@ public:
      */
     Product &operator=(const Product &product);
 
+    /**
+     * Formats entity to a string
+     * @return a string
+     */
     std::string toString();
 
+    /**
+     * Reads entity from a string
+     * @param args
+     */
     void fromString(std::string args);
 };
 

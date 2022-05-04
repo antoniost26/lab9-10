@@ -182,12 +182,12 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "VendingMachine/VendingMachine.cpp",
+			"path" : "VendingMachineUI/VendingMachineUI.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
-			"path" : "VendingMachine/VendingMachine.h",
+			"path" : "VendingMachineUI/VendingMachineUI.h",
 			"sourceGroupIndex" : 1
 		}
 	],

@@ -2,7 +2,7 @@
 #include "./Tests/Tests.h"
 #include "./ProductValidator/ProductValidator.h"
 #include "./Repository/FileRepository.h"
-#include "./VendingMachine/VendingMachine.h"
+#include "./VendingMachineUI/VendingMachineUI.h"
 
 int main() {
     Tests::testAll();
@@ -14,7 +14,7 @@ int main() {
     ProductValidator validator(repoRef);
     ProductService productService(repoRef, validator);
 
-    VendingMachine vendingMachine(productService);
+    VendingMachineUI vendingMachine(productService);
     vendingMachine.run();
 
     return EXIT_SUCCESS;

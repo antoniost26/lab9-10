@@ -31,3 +31,27 @@ int ProductService::getSize() {
 Product ProductService::getProduct(int i) {
     return this->repo.get(i);
 }
+
+void ProductService::updateProduct(int _id, int _quantity) {
+    Product newProduct = this->repo.get(_id);
+    newProduct.setQuantity(_quantity);
+    this->validator.setProduct(newProduct);
+    this->validator.update();
+    this->repo.update(newProduct);
+}
+
+void ProductService::updateProduct(int _id, std::string _name) {
+    Product newProduct = this->repo.get(_id);
+    newProduct.setName(_name);
+    this->validator.setProduct(newProduct);
+    this->validator.update();
+    this->repo.update(newProduct);
+}
+
+void ProductService::updateProduct(int _id, double price) {
+    Product newProduct = this->repo.get(_id);
+    newProduct.setPrice(price);
+    this->validator.setProduct(newProduct);
+    this->validator.update();
+    this->repo.update(newProduct);
+}

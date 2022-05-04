@@ -2,9 +2,9 @@
 // Created by Antonio on 5/3/2022.
 //
 
-#include "VendingMachine.h"
+#include "VendingMachineUI.h"
 
-void VendingMachine::run() {
+void VendingMachineUI::run() {
     std::cout << "Welcome to the User Interface!" << std::endl;
     std::cout << "To view the command menu, type 'help'" << std::endl;
 
@@ -32,7 +32,7 @@ void VendingMachine::run() {
     } while (input != "quit");
 }
 
-void VendingMachine::runCommand(const std::string& input) {
+void VendingMachineUI::runCommand(const std::string& input) {
     bool isAdmin = false;
     std::vector<std::string> args = split(input, ' ');
     std::string shouldDo = args[0];
@@ -63,7 +63,7 @@ void VendingMachine::runCommand(const std::string& input) {
         } else {
             this->handleRemove(args);
         }
-    } else if (shouldDo == "change") {
+    } else if (shouldDo == "balance") {
         if (!this->isAdmin) {
             throw std::invalid_argument("You are not an admin!");
         } else {
@@ -88,12 +88,18 @@ void VendingMachine::runCommand(const std::string& input) {
         } else {
             std::cout << "Invalid password." << std::endl;
         }
+    } else if (shouldDo == "edit") {
+        if (!this->isAdmin) {
+            throw std::invalid_argument("You are not an admin!");
+        } else {
+            this->handleEdit(args);
+        }
     } else {
         std::cout << "Invalid command. Try typing 'help' to see all commands." << std::endl;
     }
 }
 
-std::vector<std::string> VendingMachine::split(const std::string& s, char delimiter) {
+std::vector<std::string> VendingMachineUI::split(const std::string& s, char delimiter) {
     std::vector<std::string> tokens;
     std::string token;
     std::istringstream tokenStream(s);
@@ -103,21 +109,29 @@ std::vector<std::string> VendingMachine::split(const std::string& s, char delimi
     return tokens;
 }
 
-void VendingMachine::printMenu() {
+void VendingMachineUI::printMenu() {
     std::cout << "Commands:" << std::endl;
-    std::cout << "buy <id>" << std::endl;
+    std::cout << "buy <id> \n\t Buys a product using an id" << std::endl;
     std::cout << "print \n\t Prints all available products." << std::endl;
     std::cout << "quit \n\t Quits the program." << std::endl;
     if (this->isAdmin) {
         std::cout << "add <id> <name> <price> <quantity> \n\t Adds a product to the vending machine." << std::endl;
-        std::cout << "autoload \n\t Adds all products to the vending machine." << std::endl;
         std::cout << "remove <id> \n\t Removes a product from the vending machine." << std::endl;
-        std::cout << "change \n\t Prints available change." << std::endl;
+        std::cout << "edit <id> <new-name> <new-price> <new-quantity>"
+                     "\n\t Edits an existing product. Id must exist." << std::endl;
+        std::cout << "edit <id> <new-quantity> "
+                     "\n\t Edits an existing product. Id must exist." << std::endl;
+        std::cout << "edit <id> <new-price> "
+                     "\n\t Edits an existing product. Id must exist." << std::endl;
+        std::cout << "edit <id> <new-name> "
+                     "\n\t Edits an existing product. Id must exist." << std::endl;
+        std::cout << "autoload \n\t Adds random products to the vending machine." << std::endl;
+        std::cout << "balance \n\t Prints available balance by banknotes." << std::endl;
         std::cout << "sum \n\t Prints the sum of balance." << std::endl;
     }
 }
 
-void VendingMachine::handleAdd(std::vector<std::string> args) {
+void VendingMachineUI::handleAdd(std::vector<std::string> args) {
     if (args.size() != 4) {
         throw std::invalid_argument("Invalid number of arguments. Try typing 'help' to see all commands.");
     }
@@ -130,14 +144,14 @@ void VendingMachine::handleAdd(std::vector<std::string> args) {
     this->productService.addProduct(product);
 }
 
-void VendingMachine::handlePrint(std::vector<std::string> args) {
+void VendingMachineUI::handlePrint(std::vector<std::string> args) {
     std::cout << "Products:" << std::endl;
     for (auto &product : this->productService.getAll()) {
         std::cout << product << std::endl;
     }
 }
 
-bool VendingMachine::isNumber(std::string s) {
+bool VendingMachineUI::isNumber(std::string s) {
     return !s.empty() && std::find_if(
             s.begin(),
             s.end(),
@@ -147,14 +161,14 @@ bool VendingMachine::isNumber(std::string s) {
             }) == s.end();
 }
 
-bool VendingMachine::isFloat(std::string s) {
+bool VendingMachineUI::isFloat(std::string s) {
     std::istringstream iss(s);
     float f;
     iss >> std::noskipws >> f;
     return iss.eof() && !iss.fail();
 }
 
-void VendingMachine::handleAutoAdd() {
+void VendingMachineUI::handleAutoAdd() {
 
     std::random_device rd;
     std::mt19937 mt(rd());
@@ -172,7 +186,7 @@ void VendingMachine::handleAutoAdd() {
     }
 }
 
-void VendingMachine::handleRemove(std::vector<std::string> args) {
+void VendingMachineUI::handleRemove(std::vector<std::string> args) {
     if (args.size() != 1) {
         throw std::invalid_argument("Invalid number of arguments. Try typing 'help' to see all commands.");
     }
@@ -180,7 +194,7 @@ void VendingMachine::handleRemove(std::vector<std::string> args) {
     this->productService.removeProduct(id);
 }
 
-void VendingMachine::handleBuy(std::vector<std::string> args) {
+void VendingMachineUI::handleBuy(std::vector<std::string> args) {
     if (args.size() != 1) {
         throw std::invalid_argument("Invalid number of arguments. Try typing 'help' to see all commands.");
     }
@@ -250,7 +264,7 @@ void VendingMachine::handleBuy(std::vector<std::string> args) {
     }
 }
 
-int VendingMachine::getBalance() {
+int VendingMachineUI::getBalance() {
     int availableSumBalance = 0;
     for (auto coin : this->availableBalance) {
         availableSumBalance += coin.first * coin.second;
@@ -258,20 +272,49 @@ int VendingMachine::getBalance() {
     return availableSumBalance;
 }
 
-void VendingMachine::printSum() {
+void VendingMachineUI::printSum() {
     std::cout << "Available balance: " << this->getBalance() << std::endl;
 }
 
-void VendingMachine::printChange() {
+void VendingMachineUI::printChange() {
     std::cout << "Available change: " << std::endl;
     for (auto coin : this->availableBalance) {
         std::cout << coin.first << ": " << coin.second << std::endl;
     }
 }
 
-void VendingMachine::initializeBanknotes() {
+void VendingMachineUI::initializeBanknotes() {
     std::vector<int> banknotes = {1, 5, 10, 20, 50, 100, 200};
     for (auto banknote : banknotes) {
         this->availableBalance[banknote]? this->availableBalance[banknote] : 0;
+    }
+}
+
+VendingMachineUI::~VendingMachineUI() {
+    std::ofstream file(balanceFileName);
+    for (auto it : availableBalance) {
+        file << it.first << " " << it.second << std::endl;
+    }
+    file.close();
+}
+
+void VendingMachineUI::handleEdit(std::vector<std::string> args) {
+    if (args.size() < 2 || args.size() > 4 || args.size() == 3) {
+        std::cout << "Invalid number of arguments." << std::endl;
+        return;
+    }
+
+    if (args.size() == 2) {
+        if (this->isNumber(args[1])) {
+            this->productService.updateProduct(std::stoi(args[0]), std::stoi(args[1]));
+        } else if (!this->isNumber(args[1]) && !this->isFloat(args[1])) {
+            this->productService.updateProduct(std::stoi(args[0]), args[1]);
+        } else {
+            this->productService.updateProduct(std::stoi(args[0]), std::stof(args[1]));
+        }
+    } else if (args.size() == 4) {
+        this->productService.updateProduct(Product(
+            std::stoi(args[0]), args[1], std::stof(args[2]), std::stoi(args[3]))
+            );
     }
 }

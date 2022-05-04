@@ -1,2 +1,0 @@
-(id 1) - [name: 'a', description: 'a', price: 1, quantity: 1]
-
