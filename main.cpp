@@ -1,8 +1,8 @@
 #include "./Domain/Product.h"
 #include "./Tests/Tests.h"
-#include "./UserInterface/UserInterface.h"
 #include "./ProductValidator/ProductValidator.h"
 #include "./Repository/FileRepository.h"
+#include "./VendingMachine/VendingMachine.h"
 
 int main() {
     Tests::testAll();
@@ -14,8 +14,8 @@ int main() {
     ProductValidator validator(repoRef);
     ProductService productService(repoRef, validator);
 
-    UserInterface UserInterface(productService);
-    UserInterface.run();
+    VendingMachine vendingMachine(productService);
+    vendingMachine.run();
 
     return EXIT_SUCCESS;
 }

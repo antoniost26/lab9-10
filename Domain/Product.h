@@ -11,7 +11,6 @@ class Product {
 private:
     int id;
     std::string name;
-    std::string description;
     double price;
     int quantity;
 public:
@@ -20,15 +19,16 @@ public:
      */
     Product();
 
+    Product(std::string args);
+
     /**
      * Constructor
      * @param id an id
      * @param name a name
-     * @param description a description
      * @param price a price
      * @param quantity a quantity
      */
-    Product(int id, std::string name, std::string description, double price, int quantity);
+    Product(int id, std::string name, double price, int quantity);
 
     /**
      * copy constructor
@@ -54,12 +54,6 @@ public:
     std::string getName() const;
 
     /**
-     * getter for description
-     * @return description
-     */
-    std::string getDescription() const;
-
-    /**
      * getter for price
      * @return price
      */
@@ -82,12 +76,6 @@ public:
      * @param name a name
      */
     void setName(std::string name);
-
-    /**
-     * setter for description
-     * @param description a description
-     */
-    void setDescription(std::string description);
 
     /**
      * setter for price
@@ -165,6 +153,10 @@ public:
      * @return a product
      */
     Product &operator=(const Product &product);
+
+    std::string toString();
+
+    void fromString(std::string args);
 };
 
 

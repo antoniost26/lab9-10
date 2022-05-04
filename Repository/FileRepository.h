@@ -12,27 +12,27 @@ template <class R>
 class FileRepository : public IRepo<R> {
 private:
     std::string filePath;
+
     std::vector<R> repo;
 public:
     explicit FileRepository(std::string _filePath){
         this->filePath = _filePath;
-        this->repo = this->readFromFile();
+        this->readFromFile();
     };
 
-    std::vector<R> readFromFile() {
-        std::ifstream file(this->filePath);
-        std::vector<R> _repo;
-        R r;
-        while (file >> r) {
-            _repo.push_back(r);
+    void readFromFile() {
+        std::string line;
+        std::ifstream myFile(this->filePath);
+        while (getline(myFile, line)) {
+            R r(line);
+            this->repo.push_back(r);
         }
-        return repo;
     }
 
     void writeToFile() {
-        std::ofstream file(this->filePath);
+        std::ofstream myFile(this->filePath);
         for (auto r : this->repo) {
-            file << r << std::endl;
+            myFile << r.toString() << std::endl;
         }
     }
 
@@ -44,14 +44,15 @@ public:
         this->repo.push_back(r);
         this->writeToFile();
     };
-    void remove(R r) {
+    void remove(int _id) {
         for(int i = 0; i < this->repo.size(); i++) {
-            if(this->repo[i] == r) {
+            if(this->repo[i].getId() == _id) {
                 this->repo.erase(this->repo.begin() + i);
                 this->writeToFile();
                 return;
             }
         }
+        throw std::out_of_range("No element with id " + std::to_string(_id));
     };
     void update(R r) {
         for(int i = 0; i < this->repo.size(); i++) {
@@ -69,7 +70,7 @@ public:
                 return this->repo[i];
             }
         }
-        return R();
+        throw std::out_of_range("No element with this id!");
     };
 
     std::vector<R> getAll() {

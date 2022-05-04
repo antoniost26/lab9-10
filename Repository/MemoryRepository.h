@@ -70,9 +70,9 @@ public:
      * Removes an entity from repository.
      * @param entity an entity to be removed.
      */
-    void remove(T entity) override {
-        if (getPosition(entity.getId()) != -1) {
-            this->entities.erase(this->entities.begin() + getPosition(entity.getId()));
+    void remove(int _id) override {
+        if (getPosition(_id) != -1) {
+            this->entities.erase(this->entities.begin() + getPosition(_id));
         }
     }
 
@@ -107,7 +107,7 @@ public:
                 return it;
             }
         }
-        return T();
+        throw std::out_of_range("No element with given id.");
     }
 
     /**

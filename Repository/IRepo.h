@@ -10,7 +10,7 @@ template <class T>
 class IRepo {
 public:
     virtual void add(T t) = 0;
-    virtual void remove(T t) = 0;
+    virtual void remove(int _id) = 0;
     virtual void update(T t) = 0;
     virtual T get(int _id) = 0;
     virtual std::vector<T> getAll() = 0;

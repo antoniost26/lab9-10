@@ -20,10 +20,12 @@ public:
                                                                                             validator{std::move(_validator)} {};
     ~ProductService() = default;
     void addProduct(Product p);
-    void removeProduct(Product p);
+    void removeProduct(int _id);
     void updateProduct(Product p);
     std::vector<Product> getAll();
     int getSize();
+
+    Product getProduct(int i);
 };
 
 

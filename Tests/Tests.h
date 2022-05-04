@@ -13,29 +13,26 @@
 class Tests {
 public:
     static void testProduct() {
-        Product p1(1, "p1", "p1", 1, 10);
-        Product p2(2, "p2", "p2", 2, 11);
-        Product p3(3, "p3", "p3", 3, 12);
+        Product p1(1, "p1", 1, 10);
+        Product p2(2, "p2", 2, 11);
+        Product p3(3, "p3", 3, 12);
         assert(p1.getId() == 1);
         assert(p1.getName() == "p1");
-        assert(p1.getDescription() == "p1");
         assert(p1.getPrice() == 1);
         assert(p2.getId() == 2);
         assert(p2.getName() == "p2");
-        assert(p2.getDescription() == "p2");
         assert(p2.getPrice() == 2);
         assert(p3.getId() == 3);
         assert(p3.getName() == "p3");
-        assert(p3.getDescription() == "p3");
         assert(p3.getPrice() == 3);
     }
 
     static void testRepository() {
         MemoryRepository<Product> r;
         IRepo<Product>& repo = r;
-        Product p1(1, "p1", "p1", 1, 10);
-        Product p2(2, "p2", "p2", 2, 11);
-        Product p3(3, "p3", "p3", 3, 12);
+        Product p1(1, "p1", 1, 10);
+        Product p2(2, "p2", 2, 11);
+        Product p3(3, "p3", 3, 12);
         repo.add(p1);
         assert(repo.getSize() == 1);
         repo.add(p2);
@@ -49,11 +46,11 @@ public:
         assert(v[0] == p1);
         assert(v[1] == p2);
         assert(v[2] == p3);
-        repo.remove(p1);
+        repo.remove(p1.getId());
         assert(repo.getSize() == 2);
-        repo.remove(p2);
+        repo.remove(p2.getId());
         assert(repo.getSize() == 1);
-        repo.remove(p3);
+        repo.remove(p3.getId());
         assert(repo.getSize() == 0);
     }
 

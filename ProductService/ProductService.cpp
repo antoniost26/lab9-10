@@ -10,15 +10,13 @@ void ProductService::addProduct(Product p) {
     this->repo.add(p);
 }
 
-void ProductService::removeProduct(Product p) {
-    this->validator.setProduct(p);
-    this->validator.validate();
-    this->repo.remove(p);
+void ProductService::removeProduct(int _id) {
+    this->repo.remove(_id);
 }
 
 void ProductService::updateProduct(Product p) {
     this->validator.setProduct(p);
-    this->validator.validate();
+    this->validator.update();
     this->repo.update(p);
 }
 
@@ -28,4 +26,8 @@ std::vector<Product> ProductService::getAll() {
 
 int ProductService::getSize() {
     return this->repo.getSize();
+}
+
+Product ProductService::getProduct(int i) {
+    return this->repo.get(i);
 }

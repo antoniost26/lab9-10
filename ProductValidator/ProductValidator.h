@@ -21,6 +21,8 @@ public:
     void setProduct(Product other) {this->product = other;};
 
     bool doesExit();
+
+    void update();
 };
 
 
