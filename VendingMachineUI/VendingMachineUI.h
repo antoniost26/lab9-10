@@ -3,13 +3,13 @@
 //
 #include "../Domain/Product.h"
 #include "../Repository/MemoryRepository.h"
-#include "../ProductValidator/ProductValidator.h"
 #include "../ProductService/ProductService.h"
 #include <sstream>
 #include <random>
 #include <utility>
 #include <map>
 #include <fstream>
+#include <iomanip>
 
 #ifndef LAB9_10_VENDINGMACHINE_H
 #define LAB9_10_VENDINGMACHINE_H
@@ -17,8 +17,8 @@
 
 class VendingMachineUI {
 private:
-    std::map<int, int> availableBalance;
-    std::string balanceFileName = "../balance.txt";
+    std::map<double, int> availableBalance;
+    std::string balanceFileName = "../Database/balance.txt";
     bool isAdmin;
     ProductService &productService;
 public:
@@ -41,9 +41,10 @@ public:
         if (file.is_open()) {
             std::string line;
             while (std::getline(file, line)) {
-                int first, second;
+                int second;
+                double first;
                 std::vector<std::string> info = split(line, ' ');
-                first = std::stoi(info[0]);
+                first = std::stod(info[0]);
                 second = std::stoi(info[1]);
                 availableBalance[first] = second;
             }
@@ -145,6 +146,8 @@ public:
      * @param args arguments
      */
     void handleEdit(std::vector<std::string> args);
+
+    void handleEditCode(std::vector<std::string> args);
 };
 
 

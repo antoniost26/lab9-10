@@ -79,6 +79,12 @@ build CMakeFiles/lab9_10.dir/VendingMachineUI/VendingMachineUI.cpp.obj: CXX_COMP
   OBJECT_DIR = CMakeFiles\lab9_10.dir
   OBJECT_FILE_DIR = CMakeFiles\lab9_10.dir\VendingMachineUI
 
+build CMakeFiles/lab9_10.dir/Domain/MyException.cpp.obj: CXX_COMPILER__lab9_10_Debug C$:/Users/Antonio/CLionProjects/lab9-10/Domain/MyException.cpp || cmake_object_order_depends_target_lab9_10
+  DEP_FILE = CMakeFiles\lab9_10.dir\Domain\MyException.cpp.obj.d
+  FLAGS = -g -std=gnu++14
+  OBJECT_DIR = CMakeFiles\lab9_10.dir
+  OBJECT_FILE_DIR = CMakeFiles\lab9_10.dir\Domain
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target lab9_10
@@ -87,7 +93,7 @@ build CMakeFiles/lab9_10.dir/VendingMachineUI/VendingMachineUI.cpp.obj: CXX_COMP
 #############################################
 # Link the executable lab9_10.exe
 
-build lab9_10.exe: CXX_EXECUTABLE_LINKER__lab9_10_Debug CMakeFiles/lab9_10.dir/main.cpp.obj CMakeFiles/lab9_10.dir/Domain/Product.cpp.obj CMakeFiles/lab9_10.dir/ProductService/ProductService.cpp.obj CMakeFiles/lab9_10.dir/ProductValidator/ProductValidator.cpp.obj CMakeFiles/lab9_10.dir/VendingMachineUI/VendingMachineUI.cpp.obj
+build lab9_10.exe: CXX_EXECUTABLE_LINKER__lab9_10_Debug CMakeFiles/lab9_10.dir/main.cpp.obj CMakeFiles/lab9_10.dir/Domain/Product.cpp.obj CMakeFiles/lab9_10.dir/ProductService/ProductService.cpp.obj CMakeFiles/lab9_10.dir/ProductValidator/ProductValidator.cpp.obj CMakeFiles/lab9_10.dir/VendingMachineUI/VendingMachineUI.cpp.obj CMakeFiles/lab9_10.dir/Domain/MyException.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\lab9_10.dir

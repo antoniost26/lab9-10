@@ -14,16 +14,12 @@
 class ProductService {
 private:
     IRepo<Product> &repo;
-    ProductValidator validator;
 public:
     /**
      * Constructor for the ProductService class
      * @param otherRepository a repository
-     * @param _validator a prduct validator
      */
-    explicit ProductService(IRepo<Product> &otherRepository, ProductValidator _validator) : repo{otherRepository},
-                                                                                            validator{std::move(
-                                                                                                    _validator)} {};
+    explicit ProductService(IRepo<Product> &otherRepository) : repo{otherRepository} {};
 
     /**
      * Destructor
@@ -87,6 +83,23 @@ public:
      * @return a product
      */
     Product getProduct(int i);
+
+    /**
+     * Gets a product from the repository
+     * @param code product code
+     * @return a product
+     */
+    Product getProductByCode(std::string code);
+
+    /**
+     * Checks to see if product exists in the repository
+     * @param product a product
+     */
+    void doesExist(Product &product);
+
+    void updateProductCode(int i, int newCode);
+
+    void updateProductCode(int id, std::string newCode);
 };
 
 

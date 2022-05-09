@@ -74,7 +74,7 @@ public:
                 return;
             }
         }
-        throw std::out_of_range((char *) ("No element with id " + std::to_string(_id)).c_str());
+        throw MyException((char *) ("No element with id " + std::to_string(_id)).c_str());
     };
 
     /**
@@ -102,7 +102,7 @@ public:
                 return this->repo[i];
             }
         }
-        throw std::out_of_range((char *) ("No element with id " + std::to_string(_id)).c_str());
+        throw MyException((char *) ("No element with id " + std::to_string(_id)).c_str());
     };
 
     /**
@@ -120,6 +120,15 @@ public:
     int getSize() {
         return this->repo.size();
     };
+
+    R get(std::string _code) override {
+        for (int i = 0; i < this->repo.size(); i++) {
+            if (this->repo[i].getCode() == _code) {
+                return this->repo[i];
+            }
+        }
+        throw MyException((char *) ("No element with code " + _code).c_str());
+    }
 };
 
 #endif //LAB9_10_FILEREPOSITORY_H

@@ -4,30 +4,16 @@
 
 #include "ProductValidator.h"
 
-void ProductValidator::validate() {
-    if(this->doesExit()) {
-        throw std::invalid_argument("Product with same id already exists.");
+std::string ProductValidator::validate(Product &p) {
+    std::string errors;
+    if (p.getId() <= 0) {
+        errors+=("Product's id needs to be a positive integer.");
+    } else if (p.getPrice() <= 0) {
+        errors+=("Product's price needs to be a positive double/float.");
+    } else if (p.getQuantity() < 0) {
+        errors+=("Product's quantity has to be greater or equal to 0.");
+    } else if (p.getName().empty()) {
+        errors+=("Product needs a name.");
     }
-    this->update();
-}
-
-bool ProductValidator::doesExit() {
-    for (auto it : this->repo.getAll()) {
-        if (it.getId() == this->product.getId()) {
-            return true;
-        }
-    }
-    return false;
-}
-
-void ProductValidator::update() {
-    if (this->product.getId() <= 0) {
-        throw std::invalid_argument("Product's id needs to be a positive integer.");
-    } else if (this->product.getPrice() <= 0) {
-        throw std::invalid_argument("Product's price needs to be a positive double/float.");
-    } else if (this->product.getQuantity() < 0) {
-        throw std::invalid_argument("Product's quantity has to be greater or equal to 0.");
-    } else if (this->product.getName().empty()) {
-        throw std::invalid_argument("Product needs a name.");
-    }
+    return errors;
 }

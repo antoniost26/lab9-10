@@ -8,11 +8,10 @@ int main() {
     Tests::testAll();
 
     MemoryRepository<Product> repository;
-    FileRepository<Product> fileRepo("../products.txt");
+    FileRepository<Product> fileRepo("../Database/products.txt");
     IRepo<Product>& repoRef = fileRepo;
 
-    ProductValidator validator(repoRef);
-    ProductService productService(repoRef, validator);
+    ProductService productService(repoRef);
 
     VendingMachineUI vendingMachine(productService);
     vendingMachine.run();

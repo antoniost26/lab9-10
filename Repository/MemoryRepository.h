@@ -3,6 +3,7 @@
 //
 #include <vector>
 #include "IRepo.h"
+#include "../Domain/MyException.h"
 
 #ifndef LAB9_10_REPOSITORY_H
 #define LAB9_10_REPOSITORY_H
@@ -78,6 +79,20 @@ public:
 
     /**
      * Updates an entity in repository.
+     * @param code a code of an entity.
+     * @return the entity with the given code.
+     */
+    Product get(std::string code) override {
+        for (const auto& it : this->entities) {
+            if (it.getCode() == code) {
+                return it;
+            }
+        }
+        throw MyException("No product with this code!");
+    }
+
+    /**
+     * Updates an entity in repository.
      * @param entity an entity to be updated.
      */
     void update(T entity) override {
@@ -107,7 +122,7 @@ public:
                 return it;
             }
         }
-        throw std::out_of_range("No element with given id.");
+        throw MyException("No element with given id.");
     }
 
     /**

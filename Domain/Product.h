@@ -10,6 +10,7 @@
 class Product {
 private:
     int id;
+    std::string code;
     std::string name;
     double price;
     int quantity;
@@ -28,11 +29,12 @@ public:
     /**
      * Constructor
      * @param id an id
+     * @param code a code
      * @param name a name
      * @param price a price
      * @param quantity a quantity
      */
-    Product(int id, std::string name, double price, int quantity);
+    Product(int id, std::string code, std::string name, double price, int quantity);
 
     /**
      * copy constructor
@@ -50,6 +52,12 @@ public:
      * @return id
      */
     int getId() const;
+
+    /**
+     * getter for code
+     * @return code
+     */
+     std::string getCode() const;
 
     /**
      * getter for name
@@ -74,6 +82,12 @@ public:
      * @param id an id
      */
     void setId(int id);
+
+    /**
+     * setter for code
+     * @param code a code
+     */
+    void setCode(std::string code);
 
     /**
      * setter for name
@@ -169,6 +183,12 @@ public:
      * @param args
      */
     void fromString(std::string args);
+
+    /**
+     * Returns entity as a string with admin rights
+     * @return entity as a string
+     */
+    std::string toStringAdmin();
 };
 
 
