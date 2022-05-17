@@ -16,9 +16,9 @@
 class Tests {
 public:
     static void testProduct() {
-        Product p1(1, "1","p1", 1, 10);
+        Product p1(1, "1", "p1", 1, 10);
         Product p2(2, "2", "p2", 2, 11);
-        Product p3(3, "3","p3", 3, 12);
+        Product p3(3, "3", "p3", 3, 12);
         assert(p1.getId() == 1);
         assert(p1.getName() == "p1");
         assert(p1.getPrice() == 1);
@@ -32,7 +32,7 @@ public:
 
     static void testMemoryRepository() {
         MemoryRepository<Product> r;
-        IRepo<Product>& repo = r;
+        IRepo<Product> &repo = r;
         testRepoAdd(repo);
         testRepoGetAll(repo);
         testRepoUpdate(repo);
@@ -40,9 +40,9 @@ public:
     }
 
     static void testRepoAdd(IRepo<Product> &repo) {
-        Product p1(1, "2","p1", 1, 10);
-        Product p2(2, "2","p2", 2, 11);
-        Product p3(3, "3","p3", 3, 12);
+        Product p1(1, "2", "p1", 1, 10);
+        Product p2(2, "2", "p2", 2, 11);
+        Product p3(3, "3", "p3", 3, 12);
         repo.add(p1);
         assert(repo.getSize() == 1);
         repo.add(p2);
@@ -56,9 +56,9 @@ public:
 
     static void testRepoGetAll(IRepo<Product> &repo) {
         std::vector<Product> v = repo.getAll();
-        assert(v[0] == Product(1, "2","p1", 1, 10));
-        assert(v[1] == Product(2, "2","p2", 2, 11));
-        assert(v[2] == Product(3, "3","p3", 3, 12));
+        assert(v[0] == Product(1, "2", "p1", 1, 10));
+        assert(v[1] == Product(2, "2", "p2", 2, 11));
+        assert(v[2] == Product(3, "3", "p3", 3, 12));
     }
 
     static void testRepoUpdate(IRepo<Product> &repo) {
@@ -80,8 +80,8 @@ public:
         assert(testVector[0].getPrice() == 1);
         assert(testVector[0].getId() == 1);
         assert(testVector[0].getQuantity() == 10);
-        assert(testVector[1] == Product(2, "2","p2", 2, 11));
-        assert(testVector[2] == Product(3, "3","p3", 3, 12));
+        assert(testVector[1] == Product(2, "2", "p2", 2, 11));
+        assert(testVector[2] == Product(3, "3", "p3", 3, 12));
 
     }
 
@@ -96,7 +96,7 @@ public:
 
     static void testFileRepository() {
         FileRepository<Product> r("./test.txt");
-        IRepo<Product>& repo = r;
+        IRepo<Product> &repo = r;
         testRepoAdd(repo);
         testRepoGetAll(repo);
 
@@ -110,9 +110,9 @@ public:
     }
 
     static void testServiceAdd(VendingMachineService &service) {
-        Product p1(1,"1", "p1", 1, 10);
+        Product p1(1, "1", "p1", 1, 10);
         Product p2(2, "2", "p2", 2, 11);
-        Product p3(3, "3","p3", 3, 12);
+        Product p3(3, "3", "p3", 3, 12);
         service.addProduct(p1);
         assert(service.getSize() == 1);
         service.addProduct(p2);
@@ -126,18 +126,18 @@ public:
 
     static void testServiceGetAll(VendingMachineService &service) {
         std::vector<Product> v1 = service.getAll();
-        assert(v1[0] == Product(1,"1", "p1", 1, 10));
+        assert(v1[0] == Product(1, "1", "p1", 1, 10));
         assert(v1[1] == Product(2, "2", "p2", 2, 11));
-        assert(v1[2] == Product(3, "3","p3", 3, 12));
+        assert(v1[2] == Product(3, "3", "p3", 3, 12));
     }
 
     static void testServiceUpdate(VendingMachineService &service) {
-        service.updateProduct(Product(1,"1", "p1test", 2, 11));
+        service.updateProduct(Product(1, "1", "p1test", 2, 11));
         assert(service.getProduct(1).getName() == "p1test");
         assert(service.getProduct(1).getPrice() == 2);
         assert(service.getProduct(1).getId() == 1);
         assert(service.getProduct(1).getQuantity() == 11);
-        assert(service.getProduct(1) != Product(1,"1", "p1", 1, 10));
+        assert(service.getProduct(1) != Product(1, "1", "p1", 1, 10));
         service.updateProduct(2, 19.99);
         assert(service.getProduct(2).getPrice() == 19.99);
         assert(service.getProduct(2).getId() == 2);
@@ -147,7 +147,7 @@ public:
         assert(service.getProduct(3).getPrice() == 3);
         assert(service.getProduct(3).getId() == 3);
         assert(service.getProduct(3).getQuantity() == 20);
-        assert(service.getProduct(3) != Product(3, "3","p3", 3, 12));
+        assert(service.getProduct(3) != Product(3, "3", "p3", 3, 12));
     }
 
     static void testServiceRemove(VendingMachineService &service) {
@@ -162,8 +162,8 @@ public:
     static void testService() {
         FileRepository<Product> r("./test.txt");
         FileRepository<Coins> r2("./test2.txt");
-        IRepo<Product>& repo = r;
-        IRepo<Coins>& coinsRepo = r2;
+        IRepo<Product> &repo = r;
+        IRepo<Coins> &coinsRepo = r2;
         VendingMachineService s(repo, coinsRepo);
         testServiceAdd(s);
         testServiceGetAll(s);

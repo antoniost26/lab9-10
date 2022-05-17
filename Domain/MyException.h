@@ -12,8 +12,17 @@
 
 class MyException : std::exception {
 public:
+    /**
+     * Constructor
+     * @param message exception message
+     */
     explicit MyException(std::string message) : message(std::move(message)) {}
-    const char * what() { return message.c_str(); }
+
+    /**
+     * @return the message of the exception
+     */
+    const char *what() { return message.c_str(); }
+
 private:
     std::string message;
 };

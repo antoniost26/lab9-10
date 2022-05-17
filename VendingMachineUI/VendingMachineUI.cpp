@@ -94,12 +94,12 @@ void VendingMachineUI::runCommand(const std::string &input) {
             this->handleEdit(args);
         }
     } else if (shouldDo == "editcode") {
-            if (!this->isAdmin) {
-                throw MyException("You are not an admin!");
-            } else {
-                this->handleEditCode(args);
-            }
+        if (!this->isAdmin) {
+            throw MyException("You are not an admin!");
         } else {
+            this->handleEditCode(args);
+        }
+    } else {
         std::cout << "Invalid command. Try typing 'help' to see all commands." << std::endl;
     }
 }
@@ -211,12 +211,28 @@ void VendingMachineUI::handleRemove(std::vector<std::string> args) {
 }
 
 void VendingMachineUI::handleBuy(std::vector<std::string> args) {
-    if (args.size() < 1) {
+    if (args.empty()) {
         throw MyException("Invalid number of arguments. Try typing 'help' to see all commands.");
     }
     double total = 0;
-    for (auto it : args) {
-        total += this->machineService.getProductByCode(it).getPrice();
+    std::vector<Product> products = this->machineService.getAll();
+    for (auto it: args) {
+        auto product = std::find_if(
+                products.begin(),
+                products.end(),
+                [it](Product &product) {
+                    return product.getCode() == it;
+                }r
+        );
+        if (product == products.end()) {
+            throw MyException("Product with code " + it + " does not exist.");
+        }
+
+        if (product->getQuantity() == 0) {
+            throw MyException("Product with code " + it + " is out of stock.");
+        }
+        total += product->getPrice();
+        product->setQuantity(product->getQuantity() - 1);
     }
     std::cout << "Total: " << total << std::endl;
 
@@ -231,23 +247,25 @@ void VendingMachineUI::handleBuy(std::vector<std::string> args) {
 
         double money = std::stod(_money);
 
-        CoinsValidator::isValid(Coins(money, 1));
-
+        if (!CoinsValidator::isValid(Coins(money, 1))) {
+            std::cout << "Invalid money inserted." << std::endl;
+        } else {
             balance[money]++;
             maxBalance += money;
             std::cout << "Money inserted" << std::endl;
             std::cout << "Current balance: " << maxBalance << std::endl;
-
+        }
+        std::cout << "Current balance: " << maxBalance << std::endl;
     } while (maxBalance < total);
     std::vector<Coins> toBuy;
-    for (auto it : balance) {
+    for (auto it: balance) {
         toBuy.emplace_back(it.first, it.second);
     }
 
 
     std::vector<Coins> change = this->machineService.buy(args, toBuy);
     std::cout << "Change: " << std::endl;
-    for (auto it : change) {
+    for (auto it: change) {
         std::cout << it.getValue() << ": " << it.getQuantity() << std::endl;
     }
 }

@@ -14,6 +14,7 @@ class ProductValidator {
 public:
     /**
      * Validates a product
+     * @param p the product to be validated
      */
     static std::string validate(Product &p);
 };

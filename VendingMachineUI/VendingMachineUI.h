@@ -36,7 +36,8 @@ public:
      * Constructor
      * @param _productService product service
      */
-    explicit VendingMachineUI(VendingMachineService &_machineService) : machineService{_machineService}, isAdmin{false} {};
+    explicit VendingMachineUI(VendingMachineService &_machineService) : machineService{_machineService},
+                                                                        isAdmin{false} {};
 
     /**
      * Runs the vending machine

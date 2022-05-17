@@ -81,9 +81,10 @@ Product VendingMachineService::getProductByCode(std::string code) {
 void VendingMachineService::doesExist(Product &product) {
     std::vector<Product> products = this->productRepo.getAll();
 
-    for (auto& _product : products) {
+    for (auto &_product: products) {
         if (_product.getId() == product.getId()) {
-            throw MyException(std::string("Product with id " + std::to_string(product.getId()) + " already exists!").c_str());
+            throw MyException(
+                    std::string("Product with id " + std::to_string(product.getId()) + " already exists!").c_str());
         }
     }
 }
@@ -103,14 +104,14 @@ std::vector<Coins> VendingMachineService::buy(std::vector<std::string> codes, st
 
     std::vector<Coins> returnChange;
     double total = 0;
-    for (auto& code : codes) {
+    for (auto &code: codes) {
         Product product = this->productRepo.get(code);
         total += product.getPrice();
     }
 
     double totalBalance = 0;
-    for (auto& coin : balance) {
-        totalBalance += coin.getValue()*coin.getQuantity();
+    for (auto &coin: balance) {
+        totalBalance += coin.getValue() * coin.getQuantity();
     }
 
     if (total > totalBalance) {
@@ -130,7 +131,7 @@ std::vector<Coins> VendingMachineService::buy(std::vector<std::string> codes, st
                 if (returnChange.back().getValue() == it->getValue()) {
                     returnChange.back().setQuantity(returnChange.back().getQuantity() + 1);
                 } else {
-                    returnChange.push_back(*it);
+                    returnChange.emplace_back(it->getValue(), 1);
                 }
             }
             change -= it->getValue();
@@ -143,10 +144,16 @@ std::vector<Coins> VendingMachineService::buy(std::vector<std::string> codes, st
         throw MyException("Machine doesn't have enough money!");
     }
 
-    for (auto& code : codes) {
+    for (auto &code: codes) {
         Product product = this->productRepo.get(code);
         product.setQuantity(product.getQuantity() - 1);
         this->productRepo.update(product);
+    }
+
+    for (auto &coin: balance) {
+        Coins toUpdate = this->coinsRepo.get(coin.getValue());
+        toUpdate.setQuantity(toUpdate.getQuantity() + coin.getQuantity());
+        this->coinsRepo.update(toUpdate);
     }
 
     return returnChange;

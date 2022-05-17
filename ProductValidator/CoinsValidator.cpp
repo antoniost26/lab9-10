@@ -4,7 +4,7 @@
 
 #include "CoinsValidator.h"
 
-void CoinsValidator::isValid(Coins _value) {
+bool CoinsValidator::isValid(Coins _value) {
     std::vector<Coins> coins;
     {
         coins.emplace_back(0.01, 1);
@@ -22,16 +22,17 @@ void CoinsValidator::isValid(Coins _value) {
     }
 
     if (_value.getValue() <= 0) {
-        throw MyException("Invalid coin value");
+        return false;
     } else {
         bool isValid = false;
-        for (auto it : coins) {
+        for (auto it: coins) {
             if (it == _value) {
                 isValid = true;
             }
         }
         if (!isValid) {
-            throw MyException("Invalid coin value");
+            return false;
         }
     }
+    return true;
 }

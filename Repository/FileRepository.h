@@ -121,6 +121,11 @@ public:
         return this->repo.size();
     };
 
+    /**
+     * Gets an entity from the repository by code.
+     * @param _code entity's code
+     * @return the entity, if found
+     */
     R get(std::string _code) override {
         for (int i = 0; i < this->repo.size(); i++) {
             if (this->repo[i].getCode() == _code) {

@@ -10,8 +10,8 @@ int main() {
     MemoryRepository<Product> repository;
     FileRepository<Product> fileRepo("../Database/products.txt");
     FileRepository<Coins> coinsRepo("../Database/balance.txt");
-    IRepo<Product>& repoRef = fileRepo;
-    IRepo<Coins>& coinsRepoRef = coinsRepo;
+    IRepo<Product> &repoRef = fileRepo;
+    IRepo<Coins> &coinsRepoRef = coinsRepo;
 
     VendingMachineService vendingMachineService(repoRef, coinsRepoRef);
 

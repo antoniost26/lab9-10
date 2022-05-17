@@ -13,7 +13,7 @@ Product::Product() {
     this->quantity = 0;
 }
 
-Product::Product(int _id,std::string code, std::string _name, double _price, int _quantity) {
+Product::Product(int _id, std::string code, std::string _name, double _price, int _quantity) {
     this->id = _id;
     this->code = code;
     this->name = _name;
@@ -91,10 +91,11 @@ Product &Product::operator=(const Product &product) {
 
 std::ostream &operator<<(std::ostream &os, const Product &product) {
     os << "(code: " << product.code << ") - [name: '" << product.getName() <<
-    "', price: " << product.getPrice() << ", quantity: " << product.getQuantity() << "]"
-    << std::endl;
+       "', price: " << product.getPrice() << ", quantity: " << product.getQuantity() << "]"
+       << std::endl;
     return os;
 }
+
 std::istream &operator>>(std::istream &is, Product &product) {
     is >> product.id >> product.code >> product.name >> product.price >> product.quantity;
     return is;
@@ -109,24 +110,24 @@ void Product::setQuantity(int _quantity) {
 }
 
 std::string Product::toString() {
-    return std::to_string(this->id) + " " + this->code + " " + this->name + " " + std::to_string(this->price) + " "+
-    std::to_string(this->quantity) + ",";
+    return std::to_string(this->id) + " " + this->code + " " + this->name + " " + std::to_string(this->price) + " " +
+           std::to_string(this->quantity) + ",";
 }
 
-std::string Product::toStringAdmin(){
+std::string Product::toStringAdmin() {
     return "(id: " + std::to_string(this->id) + ", code: " + this->code + ") - [name: '" + this->getName() +
-                     "', price: " + std::to_string(this->getPrice())+ ", quantity: " +
-                     std::to_string(this->getQuantity()) + "]";
+           "', price: " + std::to_string(this->getPrice()) + ", quantity: " +
+           std::to_string(this->getQuantity()) + "]";
 }
 
 void Product::fromString(std::string args) {
     std::vector<std::string> elements;
     std::stringstream ss(args);
     std::string item;
-    while (getline (ss, item, ' ')) {
+    while (getline(ss, item, ' ')) {
         elements.push_back(item);
     }
-    if(elements.size() == 5) {
+    if (elements.size() == 5) {
         std::stringstream i(elements[0]);
         i >> this->id;
         std::stringstream c(elements[1]);

@@ -10,7 +10,11 @@
 
 class CoinsValidator {
 public:
-    static void isValid(Coins _value);
+    /**
+     * Validates the coins.
+     * @param _value a Coins object.
+     */
+    static bool isValid(Coins _value);
 };
 
 

@@ -68,10 +68,10 @@ Coins::Coins(std::string args) {
     std::vector<std::string> elements;
     std::stringstream ss(args);
     std::string item;
-    while (getline (ss, item, ' ')) {
+    while (getline(ss, item, ' ')) {
         elements.push_back(item);
     }
-    if(elements.size() == 2) {
+    if (elements.size() == 2) {
         std::stringstream i(elements[0]);
         i >> this->value;
         std::stringstream c(elements[1]);

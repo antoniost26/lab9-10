@@ -57,7 +57,7 @@ public:
      * getter for code
      * @return code
      */
-     std::string getCode() const;
+    std::string getCode() const;
 
     /**
      * getter for name

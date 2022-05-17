@@ -8,14 +8,14 @@
 #ifndef LAB9_10_REPOSITORY_H
 #define LAB9_10_REPOSITORY_H
 
-template <class T>
-class MemoryRepository: public IRepo<T> {
+template<class T>
+class MemoryRepository : public IRepo<T> {
 private:
     std::vector<T> entities;
 
     int getPosition(int _id) {
         int index = 0;
-        for (const auto& it : this->entities) {
+        for (const auto &it: this->entities) {
             if (it.getId() == _id) {
                 return index;
             }
@@ -83,7 +83,7 @@ public:
      * @return the entity with the given code.
      */
     Product get(std::string code) override {
-        for (const auto& it : this->entities) {
+        for (const auto &it: this->entities) {
             if (it.getCode() == code) {
                 return it;
             }
@@ -96,7 +96,7 @@ public:
      * @param entity an entity to be updated.
      */
     void update(T entity) override {
-        for (auto &e : this->entities) {
+        for (auto &e: this->entities) {
             if (e.getId() == entity.getId()) {
                 e = entity;
             }
@@ -117,7 +117,7 @@ public:
      * @return an entity.
      */
     T get(int id) override {
-        for (auto it : this->entities) {
+        for (auto it: this->entities) {
             if (it.getId() == id) {
                 return it;
             }
