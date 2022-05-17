@@ -15,7 +15,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/mingw/bin/addr2line.exe"
+			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/221.5080.224/bin/mingw/bin/addr2line.exe"
 		},
 		{
 			"name" : "CMAKE_AR",
@@ -31,7 +31,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/mingw/bin/ar.exe"
+			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/221.5080.224/bin/mingw/bin/ar.exe"
 		},
 		{
 			"name" : "CMAKE_BUILD_TYPE",
@@ -79,7 +79,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "21"
+			"value" : "22"
 		},
 		{
 			"name" : "CMAKE_CACHE_PATCH_VERSION",
@@ -91,7 +91,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "1"
+			"value" : "3"
 		},
 		{
 			"name" : "CMAKE_COMMAND",
@@ -103,7 +103,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/win/bin/cmake.exe"
+			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/221.5080.224/bin/cmake/win/bin/cmake.exe"
 		},
 		{
 			"name" : "CMAKE_CPACK_COMMAND",
@@ -115,7 +115,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/win/bin/cpack.exe"
+			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/221.5080.224/bin/cmake/win/bin/cpack.exe"
 		},
 		{
 			"name" : "CMAKE_CTEST_COMMAND",
@@ -127,7 +127,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/win/bin/ctest.exe"
+			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/221.5080.224/bin/cmake/win/bin/ctest.exe"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER",
@@ -143,7 +143,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/mingw/bin/g++.exe"
+			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/221.5080.224/bin/mingw/bin/g++.exe"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER_AR",
@@ -159,7 +159,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/mingw/bin/gcc-ar.exe"
+			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/221.5080.224/bin/mingw/bin/gcc-ar.exe"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER_RANLIB",
@@ -175,7 +175,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/mingw/bin/gcc-ranlib.exe"
+			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/221.5080.224/bin/mingw/bin/gcc-ranlib.exe"
 		},
 		{
 			"name" : "CMAKE_CXX_FLAGS",
@@ -287,7 +287,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/mingw/bin/gcc.exe"
+			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/221.5080.224/bin/mingw/bin/gcc.exe"
 		},
 		{
 			"name" : "CMAKE_C_COMPILER_AR",
@@ -303,7 +303,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/mingw/bin/gcc-ar.exe"
+			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/221.5080.224/bin/mingw/bin/gcc-ar.exe"
 		},
 		{
 			"name" : "CMAKE_C_COMPILER_RANLIB",
@@ -319,7 +319,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/mingw/bin/gcc-ranlib.exe"
+			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/221.5080.224/bin/mingw/bin/gcc-ranlib.exe"
 		},
 		{
 			"name" : "CMAKE_C_FLAGS",
@@ -431,7 +431,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/mingw/bin/dlltool.exe"
+			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/221.5080.224/bin/mingw/bin/dlltool.exe"
 		},
 		{
 			"name" : "CMAKE_EXECUTABLE_FORMAT",
@@ -626,198 +626,6 @@
 			"value" : "C:/Users/Antonio/CLionProjects/lab9-10"
 		},
 		{
-			"name" : "CMAKE_INSTALL_BINDIR",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "User executables (bin)"
-				}
-			],
-			"type" : "PATH",
-			"value" : "bin"
-		},
-		{
-			"name" : "CMAKE_INSTALL_DATADIR",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Read-only architecture-independent data (DATAROOTDIR)"
-				}
-			],
-			"type" : "PATH",
-			"value" : ""
-		},
-		{
-			"name" : "CMAKE_INSTALL_DATAROOTDIR",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Read-only architecture-independent data root (share)"
-				}
-			],
-			"type" : "PATH",
-			"value" : "share"
-		},
-		{
-			"name" : "CMAKE_INSTALL_DOCDIR",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Documentation root (DATAROOTDIR/doc/PROJECT_NAME)"
-				}
-			],
-			"type" : "PATH",
-			"value" : ""
-		},
-		{
-			"name" : "CMAKE_INSTALL_INCLUDEDIR",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "C header files (include)"
-				}
-			],
-			"type" : "PATH",
-			"value" : "include"
-		},
-		{
-			"name" : "CMAKE_INSTALL_INFODIR",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Info documentation (DATAROOTDIR/info)"
-				}
-			],
-			"type" : "PATH",
-			"value" : ""
-		},
-		{
-			"name" : "CMAKE_INSTALL_LIBDIR",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Object code libraries (lib)"
-				}
-			],
-			"type" : "PATH",
-			"value" : "lib"
-		},
-		{
-			"name" : "CMAKE_INSTALL_LIBEXECDIR",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Program executables (libexec)"
-				}
-			],
-			"type" : "PATH",
-			"value" : "libexec"
-		},
-		{
-			"name" : "CMAKE_INSTALL_LOCALEDIR",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Locale-dependent data (DATAROOTDIR/locale)"
-				}
-			],
-			"type" : "PATH",
-			"value" : ""
-		},
-		{
-			"name" : "CMAKE_INSTALL_LOCALSTATEDIR",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Modifiable single-machine data (var)"
-				}
-			],
-			"type" : "PATH",
-			"value" : "var"
-		},
-		{
-			"name" : "CMAKE_INSTALL_MANDIR",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Man documentation (DATAROOTDIR/man)"
-				}
-			],
-			"type" : "PATH",
-			"value" : ""
-		},
-		{
-			"name" : "CMAKE_INSTALL_OLDINCLUDEDIR",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "C header files for non-gcc (/usr/include)"
-				}
-			],
-			"type" : "PATH",
-			"value" : "/usr/include"
-		},
-		{
 			"name" : "CMAKE_INSTALL_PREFIX",
 			"properties" : 
 			[
@@ -828,70 +636,6 @@
 			],
 			"type" : "PATH",
 			"value" : "C:/Program Files (x86)/lab9_10"
-		},
-		{
-			"name" : "CMAKE_INSTALL_RUNSTATEDIR",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Run-time variable data (LOCALSTATEDIR/run)"
-				}
-			],
-			"type" : "PATH",
-			"value" : ""
-		},
-		{
-			"name" : "CMAKE_INSTALL_SBINDIR",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "System admin executables (sbin)"
-				}
-			],
-			"type" : "PATH",
-			"value" : "sbin"
-		},
-		{
-			"name" : "CMAKE_INSTALL_SHAREDSTATEDIR",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Modifiable architecture-independent data (com)"
-				}
-			],
-			"type" : "PATH",
-			"value" : "com"
-		},
-		{
-			"name" : "CMAKE_INSTALL_SYSCONFDIR",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Read-only single-machine data (etc)"
-				}
-			],
-			"type" : "PATH",
-			"value" : "etc"
 		},
 		{
 			"name" : "CMAKE_LINKER",
@@ -907,7 +651,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/mingw/bin/ld.exe"
+			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/221.5080.224/bin/mingw/bin/ld.exe"
 		},
 		{
 			"name" : "CMAKE_MAKE_PROGRAM",
@@ -919,7 +663,7 @@
 				}
 			],
 			"type" : "UNINITIALIZED",
-			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/ninja/win/ninja.exe"
+			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/221.5080.224/bin/ninja/win/ninja.exe"
 		},
 		{
 			"name" : "CMAKE_MODULE_LINKER_FLAGS",
@@ -1015,7 +759,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/mingw/bin/nm.exe"
+			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/221.5080.224/bin/mingw/bin/nm.exe"
 		},
 		{
 			"name" : "CMAKE_NUMBER_OF_MAKEFILES",
@@ -1043,7 +787,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/mingw/bin/objcopy.exe"
+			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/221.5080.224/bin/mingw/bin/objcopy.exe"
 		},
 		{
 			"name" : "CMAKE_OBJDUMP",
@@ -1059,7 +803,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/mingw/bin/objdump.exe"
+			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/221.5080.224/bin/mingw/bin/objdump.exe"
 		},
 		{
 			"name" : "CMAKE_PLATFORM_INFO_INITIALIZED",
@@ -1110,66 +854,6 @@
 			"value" : "lab9_10"
 		},
 		{
-			"name" : "CMAKE_PROJECT_VERSION",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "3.10.5"
-		},
-		{
-			"name" : "CMAKE_PROJECT_VERSION_MAJOR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "3"
-		},
-		{
-			"name" : "CMAKE_PROJECT_VERSION_MINOR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "10"
-		},
-		{
-			"name" : "CMAKE_PROJECT_VERSION_PATCH",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "5"
-		},
-		{
-			"name" : "CMAKE_PROJECT_VERSION_TWEAK",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : ""
-		},
-		{
 			"name" : "CMAKE_RANLIB",
 			"properties" : 
 			[
@@ -1183,7 +867,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/mingw/bin/ranlib.exe"
+			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/221.5080.224/bin/mingw/bin/ranlib.exe"
 		},
 		{
 			"name" : "CMAKE_RC_COMPILER",
@@ -1199,7 +883,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/mingw/bin/windres.exe"
+			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/221.5080.224/bin/mingw/bin/windres.exe"
 		},
 		{
 			"name" : "CMAKE_RC_COMPILER_WORKS",
@@ -1307,7 +991,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/mingw/bin/readelf.exe"
+			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/221.5080.224/bin/mingw/bin/readelf.exe"
 		},
 		{
 			"name" : "CMAKE_ROOT",
@@ -1319,7 +1003,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/win/share/cmake-3.21"
+			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/221.5080.224/bin/cmake/win/share/cmake-3.22"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS",
@@ -1527,7 +1211,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/mingw/bin/strip.exe"
+			"value" : "C:/Users/Antonio/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/221.5080.224/bin/mingw/bin/strip.exe"
 		},
 		{
 			"name" : "CMAKE_VERBOSE_MAKEFILE",
@@ -1544,114 +1228,6 @@
 			],
 			"type" : "BOOL",
 			"value" : "FALSE"
-		},
-		{
-			"name" : "JSON_BuildTests",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Build the unit tests when BUILD_TESTING is enabled."
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "OFF"
-		},
-		{
-			"name" : "JSON_CI",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Enable CI build targets."
-				}
-			],
-			"type" : "BOOL",
-			"value" : "OFF"
-		},
-		{
-			"name" : "JSON_Diagnostics",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Use extended diagnostic messages."
-				}
-			],
-			"type" : "BOOL",
-			"value" : "OFF"
-		},
-		{
-			"name" : "JSON_ImplicitConversions",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Enable implicit conversions."
-				}
-			],
-			"type" : "BOOL",
-			"value" : "ON"
-		},
-		{
-			"name" : "JSON_Install",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Install CMake targets during install step."
-				}
-			],
-			"type" : "BOOL",
-			"value" : "OFF"
-		},
-		{
-			"name" : "JSON_MultipleHeaders",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Use non-amalgamated version of the library."
-				}
-			],
-			"type" : "BOOL",
-			"value" : "OFF"
-		},
-		{
-			"name" : "JSON_SystemInclude",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Include as system headers (skip for clang-tidy)."
-				}
-			],
-			"type" : "BOOL",
-			"value" : "OFF"
-		},
-		{
-			"name" : "NLOHMANN_JSON_CONFIG_INSTALL_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "lib/cmake/nlohmann_json"
-		},
-		{
-			"name" : "_GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "CMAKE_INSTALL_PREFIX during last run"
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "C:/Program Files (x86)/lab9_10"
 		},
 		{
 			"name" : "lab9_10_BINARY_DIR",
@@ -1688,54 +1264,6 @@
 			],
 			"type" : "STATIC",
 			"value" : "C:/Users/Antonio/CLionProjects/lab9-10"
-		},
-		{
-			"name" : "nlohmann_json_BINARY_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "C:/Users/Antonio/CLionProjects/lab9-10/cmake-build-debug/nlohmann_json/json"
-		},
-		{
-			"name" : "nlohmann_json_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "The directory containing a CMake configuration file for nlohmann_json."
-				}
-			],
-			"type" : "PATH",
-			"value" : "nlohmann_json_DIR-NOTFOUND"
-		},
-		{
-			"name" : "nlohmann_json_IS_TOP_LEVEL",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "OFF"
-		},
-		{
-			"name" : "nlohmann_json_SOURCE_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "C:/Users/Antonio/CLionProjects/lab9-10/nlohmann_json/json"
 		}
 	],
 	"kind" : "cache",

@@ -3,7 +3,8 @@
 //
 #include "../Domain/Product.h"
 #include "../Repository/MemoryRepository.h"
-#include "../ProductService/ProductService.h"
+#include "../VendingMachineService/VendingMachineService.h"
+#include "../ProductValidator/CoinsValidator.h"
 #include <sstream>
 #include <random>
 #include <utility>
@@ -17,10 +18,9 @@
 
 class VendingMachineUI {
 private:
-    std::map<double, int> availableBalance;
     std::string balanceFileName = "../Database/balance.txt";
     bool isAdmin;
-    ProductService &productService;
+    VendingMachineService &machineService;
 public:
     /**
      * Deletes no argument constructor
@@ -30,28 +30,13 @@ public:
     /**
      * Destructor
      */
-    ~VendingMachineUI();
+    ~VendingMachineUI() = default;
 
     /**
      * Constructor
      * @param _productService product service
      */
-    explicit VendingMachineUI(ProductService &_productService) : productService{_productService}, isAdmin{false} {
-        std::ifstream file(balanceFileName);
-        if (file.is_open()) {
-            std::string line;
-            while (std::getline(file, line)) {
-                int second;
-                double first;
-                std::vector<std::string> info = split(line, ' ');
-                first = std::stod(info[0]);
-                second = std::stoi(info[1]);
-                availableBalance[first] = second;
-            }
-        }
-        this->initializeBanknotes();
-        file.close();
-    };
+    explicit VendingMachineUI(VendingMachineService &_machineService) : machineService{_machineService}, isAdmin{false} {};
 
     /**
      * Runs the vending machine

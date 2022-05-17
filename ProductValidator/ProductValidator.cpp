@@ -8,6 +8,10 @@ std::string ProductValidator::validate(Product &p) {
     std::string errors;
     if (p.getId() <= 0) {
         errors+=("Product's id needs to be a positive integer.");
+    } else if (p.getCode().empty()) {
+        errors+=("Product's code needs to be a non-empty string.");
+    } else if (std::stod(p.getCode()) <= 0) {
+        errors+=("Product's code needs to be a positive number.");
     } else if (p.getPrice() <= 0) {
         errors+=("Product's price needs to be a positive double/float.");
     } else if (p.getQuantity() < 0) {

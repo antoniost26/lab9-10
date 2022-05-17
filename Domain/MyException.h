@@ -12,14 +12,10 @@
 
 class MyException : std::exception {
 public:
-    explicit MyException(const char *message) : message(message), message_string(std::string()) {}
-    explicit MyException(std::string message) : message_string(std::move(message)), message(nullptr) {}
-    const char *what() const noexcept override {
-        return message? message : message_string.c_str();
-    }
+    explicit MyException(std::string message) : message(std::move(message)) {}
+    const char * what() { return message.c_str(); }
 private:
-    const char *message{};
-    const std::string message_string;
+    std::string message;
 };
 
 

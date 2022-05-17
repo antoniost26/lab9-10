@@ -60,7 +60,8 @@
 				3,
 				8,
 				11,
-				13
+				14,
+				16
 			]
 		}
 	],
@@ -102,7 +103,8 @@
 				3,
 				8,
 				11,
-				13
+				14,
+				16
 			]
 		},
 		{
@@ -117,7 +119,9 @@
 				9,
 				10,
 				12,
-				14
+				13,
+				15,
+				17
 			]
 		}
 	],
@@ -143,12 +147,12 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "ProductService/ProductService.cpp",
+			"path" : "VendingMachineService/VendingMachineService.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
-			"path" : "ProductService/ProductService.h",
+			"path" : "VendingMachineService/VendingMachineService.h",
 			"sourceGroupIndex" : 1
 		},
 		{
@@ -195,13 +199,29 @@
 		},
 		{
 			"backtrace" : 1,
+			"path" : "Domain/MyException.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "Domain/MyException.cpp",
+			"path" : "Domain/Coins.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
-			"path" : "Domain/MyException.h",
+			"path" : "Domain/Coins.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "ProductValidator/CoinsValidator.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "ProductValidator/CoinsValidator.h",
 			"sourceGroupIndex" : 1
 		}
 	],

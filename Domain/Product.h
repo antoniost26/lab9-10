@@ -130,6 +130,8 @@ public:
      */
     bool operator==(const Product &product) const;
 
+    bool operator==(const int id) const;
+
     /**
      * Overload to != operator
      * @param product a product

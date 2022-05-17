@@ -4,7 +4,7 @@
 #include "../Domain/Product.h"
 #include "../Repository/MemoryRepository.h"
 #include "../ProductValidator/ProductValidator.h"
-#include "../ProductService/ProductService.h"
+#include "../VendingMachineService/VendingMachineService.h"
 #include "../Repository/FileRepository.h"
 #include <cassert>
 #include <chrono>
@@ -109,7 +109,7 @@ public:
         remove("./test.txt");
     }
 
-    static void testServiceAdd(ProductService &service) {
+    static void testServiceAdd(VendingMachineService &service) {
         Product p1(1,"1", "p1", 1, 10);
         Product p2(2, "2", "p2", 2, 11);
         Product p3(3, "3","p3", 3, 12);
@@ -124,14 +124,14 @@ public:
         assert(service.getProduct(3) == p3);
     }
 
-    static void testServiceGetAll(ProductService &service) {
+    static void testServiceGetAll(VendingMachineService &service) {
         std::vector<Product> v1 = service.getAll();
         assert(v1[0] == Product(1,"1", "p1", 1, 10));
         assert(v1[1] == Product(2, "2", "p2", 2, 11));
         assert(v1[2] == Product(3, "3","p3", 3, 12));
     }
 
-    static void testServiceUpdate(ProductService &service) {
+    static void testServiceUpdate(VendingMachineService &service) {
         service.updateProduct(Product(1,"1", "p1test", 2, 11));
         assert(service.getProduct(1).getName() == "p1test");
         assert(service.getProduct(1).getPrice() == 2);
@@ -150,7 +150,7 @@ public:
         assert(service.getProduct(3) != Product(3, "3","p3", 3, 12));
     }
 
-    static void testServiceRemove(ProductService &service) {
+    static void testServiceRemove(VendingMachineService &service) {
         service.removeProduct(1);
         assert(service.getSize() == 2);
         service.removeProduct(2);
@@ -161,8 +161,10 @@ public:
 
     static void testService() {
         FileRepository<Product> r("./test.txt");
+        FileRepository<Coins> r2("./test2.txt");
         IRepo<Product>& repo = r;
-        ProductService s(repo);
+        IRepo<Coins>& coinsRepo = r2;
+        VendingMachineService s(repo, coinsRepo);
         testServiceAdd(s);
         testServiceGetAll(s);
         testServiceUpdate(s);

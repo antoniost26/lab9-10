@@ -151,3 +151,7 @@ std::string Product::getCode() const {
 void Product::setCode(std::string _code) {
     this->code = _code;
 }
+
+bool Product::operator==(const int id) const {
+    return this->id == id;
+}

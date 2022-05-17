@@ -33,7 +33,6 @@ void VendingMachineUI::run() {
 }
 
 void VendingMachineUI::runCommand(const std::string &input) {
-    bool isAdmin = false;
     std::vector<std::string> args = split(input, ' ');
     std::string shouldDo = args[0];
     args.erase(args.begin());
@@ -135,9 +134,12 @@ void VendingMachineUI::printMenu() {
                      "\n\t Edits an existing product. Id must exist." << std::endl;
         std::cout << "edit <id> <new-name> "
                      "\n\t Edits an existing product. Id must exist." << std::endl;
-        std::cout << "autoload \n\t Adds random products to the vending machine." << std::endl;
-        std::cout << "balance \n\t Prints available balance by banknotes." << std::endl;
-        std::cout << "sum \n\t Prints the sum of balance." << std::endl;
+        std::cout << "autoload "
+                     "\n\t Adds random products to the vending machine." << std::endl;
+        std::cout << "balance"
+                     "\n\t Prints available balance by banknotes." << std::endl;
+        std::cout << "sum "
+                     "\n\t Prints the sum of balance." << std::endl;
     }
 }
 
@@ -152,12 +154,12 @@ void VendingMachineUI::handleAdd(std::vector<std::string> args) {
     int quantity = std::stoi(args[4]);
 
     Product product(id, code, name, price, quantity);
-    this->productService.addProduct(product);
+    this->machineService.addProduct(product);
 }
 
 void VendingMachineUI::handlePrint(std::vector<std::string> args) {
     std::cout << "Products:" << std::endl;
-    for (auto &product: this->productService.getAll()) {
+    for (auto &product: this->machineService.getAll()) {
         isAdmin
         ? std::cout << std::setprecision(2) << std::fixed << product.toStringAdmin() << std::endl
         : std::cout << std::setprecision(2) << std::fixed << product << std::endl;
@@ -188,7 +190,7 @@ void VendingMachineUI::handleAutoAdd() {
     std::uniform_real_distribution<double> dist(1.0, 100.0);
 
     for (int i = 0; i < 10; i++) {
-        this->productService.addProduct(
+        this->machineService.addProduct(
                 Product(
                         (int) floor(dist(mt)),
                         std::to_string(i),
@@ -205,48 +207,21 @@ void VendingMachineUI::handleRemove(std::vector<std::string> args) {
         throw MyException("Invalid number of arguments. Try typing 'help' to see all commands.");
     }
     int id = std::stoi(args[0]);
-    this->productService.removeProduct(id);
+    this->machineService.removeProduct(id);
 }
 
 void VendingMachineUI::handleBuy(std::vector<std::string> args) {
     if (args.size() < 1) {
         throw MyException("Invalid number of arguments. Try typing 'help' to see all commands.");
     }
-
-    std::vector<Product> products;
-    products.reserve(args.size());
-    double price = 0;
-    for (auto &arg: args) {
-        Product product = this->productService.getProductByCode(arg);
-
-        if (product.getQuantity() == 0) {
-            std::cout << "Product out of stock." << std::endl;
-            return;
-        }
-
-        products.push_back(product);
-        price += product.getPrice();
+    double total = 0;
+    for (auto it : args) {
+        total += this->machineService.getProductByCode(it).getPrice();
     }
+    std::cout << "Total: " << total << std::endl;
 
     std::map<double, int> balance;
-    {
-        balance[0.01] = 0;
-        balance[0.05] = 0;
-        balance[0.1] = 0;
-        balance[0.5] = 0;
-        balance[1] = 0;
-        balance[5] = 0;
-        balance[10] = 0;
-        balance[20] = 0;
-        balance[50] = 0;
-        balance[100] = 0;
-        balance[200] = 0;
-        balance[500] = 0;
-    }
-
     double maxBalance = 0;
-
-    std::cout << std::setprecision(2) << std::fixed << "Money to pay for products: " << price << std::endl;
 
     do {
         std::string _money;
@@ -256,75 +231,31 @@ void VendingMachineUI::handleBuy(std::vector<std::string> args) {
 
         double money = std::stod(_money);
 
-        if (money != 0.01 && money != 0.05 && money != 0.1 && money != 0.5 && money != 1 && money != 5 && money != 10 &&
-            money != 20 && money != 50 && money != 100 && money != 200 && money != 500) {
-            std::cout << "Invalid money amount." << std::endl;
-        } else {
+        CoinsValidator::isValid(Coins(money, 1));
+
             balance[money]++;
             maxBalance += money;
             std::cout << "Money inserted" << std::endl;
             std::cout << "Current balance: " << maxBalance << std::endl;
-        }
-    } while (maxBalance < price);
 
-    double change = maxBalance - price;
-    std::map<double, int> coins = this->availableBalance;
-    double sumBalance = this->getBalance();
-
-    change = (float)(int)(change * 100) / 100;
-
-    std::cout << std::setprecision(2) << std::fixed << "Change to be given: " << change << std::endl;
-
-    std::map<double, int>::reverse_iterator it;
-    std::map<double, int> changeToGive;
-
-    {
-        changeToGive[0.01] = 0;
-        changeToGive[0.05] = 0;
-        changeToGive[0.1] = 0;
-        changeToGive[0.5] = 0;
-        changeToGive[1] = 0;
-        changeToGive[5] = 0;
-        changeToGive[10] = 0;
-        changeToGive[20] = 0;
-        changeToGive[50] = 0;
-        changeToGive[100] = 0;
-        changeToGive[200] = 0;
-        changeToGive[500] = 0;
+    } while (maxBalance < total);
+    std::vector<Coins> toBuy;
+    for (auto it : balance) {
+        toBuy.emplace_back(it.first, it.second);
     }
 
-    for (it = coins.rbegin(); it != coins.rend(); ++it) {
-        while (change >= it->first && it->second > 0) {
-            change -= it->first;
-            it->second--;
-            changeToGive[it->first]++;
-        }
-    }
 
-    if (std::abs(change) < 0.0099999999999999999999) {
-        std::cout << "Out-coming change: " << std::endl;
-        for (auto _it : changeToGive) {
-            if (_it.second > 0) {
-                std::cout << _it.first << ": " << _it.second << std::endl;
-            }
-        }
-        std::cout << "Thank you for your purchase." << std::endl;
-        this->availableBalance = coins;
-        for (auto it: balance) {
-            it.second > 0 ? this->availableBalance[it.first] += it.second : 0;
-        }
-        for (auto it: products) {
-            this->productService.updateProduct(it.getId(), it.getQuantity() - 1);
-        }
-    } else {
-        std::cout << "Vending machine doesn't have enough change. We're sorry." << std::endl;
+    std::vector<Coins> change = this->machineService.buy(args, toBuy);
+    std::cout << "Change: " << std::endl;
+    for (auto it : change) {
+        std::cout << it.getValue() << ": " << it.getQuantity() << std::endl;
     }
 }
 
 int VendingMachineUI::getBalance() {
     int availableSumBalance = 0;
-    for (auto coin: this->availableBalance) {
-        availableSumBalance += coin.first * coin.second;
+    for (auto coin: this->machineService.getCoins()) {
+        availableSumBalance += coin.getValue() * coin.getQuantity();
     }
     return availableSumBalance;
 }
@@ -335,24 +266,9 @@ void VendingMachineUI::printSum() {
 
 void VendingMachineUI::printChange() {
     std::cout << "Available change: " << std::endl;
-    for (auto coin: this->availableBalance) {
-        std::cout << std::setprecision(2) << std::fixed << coin.first << ": " << coin.second << std::endl;
+    for (auto coin: this->machineService.getCoins()) {
+        std::cout << std::setprecision(2) << std::fixed << coin.getValue() << ": " << coin.getQuantity() << std::endl;
     }
-}
-
-void VendingMachineUI::initializeBanknotes() {
-    std::vector<int> banknotes = {1, 5, 10, 20, 50, 100, 200};
-    for (auto banknote: banknotes) {
-        this->availableBalance[banknote] ? this->availableBalance[banknote] : 0;
-    }
-}
-
-VendingMachineUI::~VendingMachineUI() {
-    std::ofstream file(balanceFileName);
-    for (auto it: availableBalance) {
-        file << std::setprecision(2) << std::fixed << it.first << " " << it.second << std::endl;
-    }
-    file.close();
 }
 
 void VendingMachineUI::handleEdit(std::vector<std::string> args) {
@@ -363,15 +279,15 @@ void VendingMachineUI::handleEdit(std::vector<std::string> args) {
 
     if (args.size() == 2) {
         if (this->isNumber(args[1])) {
-            this->productService.updateProduct(std::stoi(args[0]), std::stoi(args[1]));
+            this->machineService.updateProduct(std::stoi(args[0]), std::stoi(args[1]));
         } else if (!this->isNumber(args[1]) && !this->isFloat(args[1])) {
-            this->productService.updateProduct(std::stoi(args[0]), args[1]);
+            this->machineService.updateProduct(std::stoi(args[0]), args[1]);
         } else {
-            this->productService.updateProduct(std::stoi(args[0]), std::stof(args[1]));
+            this->machineService.updateProduct(std::stoi(args[0]), std::stod(args[1]));
         }
     } else if (args.size() == 5) {
-        this->productService.updateProduct(Product(
-                std::stoi(args[0]), args[1], args[2], std::stof(args[3]), std::stoi(args[4]))
+        this->machineService.updateProduct(Product(
+                std::stoi(args[0]), args[1], args[2], std::stod(args[3]), std::stoi(args[4]))
         );
     }
 }
@@ -381,5 +297,5 @@ void VendingMachineUI::handleEditCode(std::vector<std::string> args) {
         throw MyException("Invalid number of arguments.");
     }
 
-    this->productService.updateProductCode(std::stoi(args[0]), args[1]);
+    this->machineService.updateProductCode(std::stoi(args[0]), args[1]);
 }

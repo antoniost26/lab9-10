@@ -57,7 +57,7 @@ public:
      * Adds an entity to the repository
      * @param r an entity
      */
-    void add(R r) {
+    void add(R r) override {
         this->repo.push_back(r);
         this->writeToFile();
     };
@@ -66,9 +66,9 @@ public:
      * Removes an entity from the repository
      * @param _id entity id
      */
-    void remove(int _id) {
+    void remove(int _id) override {
         for (int i = 0; i < this->repo.size(); i++) {
-            if (this->repo[i].getId() == _id) {
+            if (this->repo[i] == _id) {
                 this->repo.erase(this->repo.begin() + i);
                 this->writeToFile();
                 return;
@@ -81,7 +81,7 @@ public:
      * Updates an entity in the repository
      * @param r an entity
      */
-    void update(R r) {
+    void update(R r) override {
         for (int i = 0; i < this->repo.size(); i++) {
             if (this->repo[i].getId() == r.getId()) {
                 this->repo[i] = r;
@@ -96,7 +96,7 @@ public:
      * @param _id entity id
      * @return an entity
      */
-    R get(int _id) {
+    R get(int _id) override {
         for (int i = 0; i < this->repo.size(); i++) {
             if (this->repo[i].getId() == _id) {
                 return this->repo[i];
@@ -109,7 +109,7 @@ public:
      * Gets all entities from the repository
      * @return a vector with all entities
      */
-    std::vector<R> getAll() {
+    std::vector<R> getAll() override {
         return this->repo;
     };
 
@@ -117,7 +117,7 @@ public:
      * Gets the size of the repository
      * @return the size of the repository
      */
-    int getSize() {
+    int getSize() override {
         return this->repo.size();
     };
 
@@ -127,7 +127,7 @@ public:
                 return this->repo[i];
             }
         }
-        throw MyException((char *) ("No element with code " + _code).c_str());
+        throw MyException(std::string("No element with code " + _code).c_str());
     }
 };
 

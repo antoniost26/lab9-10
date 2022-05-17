@@ -6,25 +6,28 @@
 #include "../Domain/Product.h"
 #include "../Repository/MemoryRepository.h"
 #include "../ProductValidator/ProductValidator.h"
+#include "../Domain/Coins.h"
 
 #ifndef LAB9_10_PRODUCTSERVICE_H
 #define LAB9_10_PRODUCTSERVICE_H
 
 
-class ProductService {
+class VendingMachineService {
 private:
-    IRepo<Product> &repo;
+    IRepo<Product> &productRepo;
+    IRepo<Coins> &coinsRepo;
 public:
     /**
-     * Constructor for the ProductService class
+     * Constructor for the VendingMachineService class
      * @param otherRepository a repository
      */
-    explicit ProductService(IRepo<Product> &otherRepository) : repo{otherRepository} {};
+    explicit VendingMachineService(IRepo<Product> &otherRepository, IRepo<Coins> &coinsRepo)
+            : productRepo{otherRepository}, coinsRepo(coinsRepo) {};
 
     /**
      * Destructor
      */
-    ~ProductService() = default;
+    ~VendingMachineService() = default;
 
     /**
      * Adds a product to the repository
@@ -97,9 +100,21 @@ public:
      */
     void doesExist(Product &product);
 
-    void updateProductCode(int i, int newCode);
-
+    /**
+     * Updates product code for a product
+     * @param id product id
+     * @param newCode new product code
+     */
     void updateProductCode(int id, std::string newCode);
+
+    /**
+     * Buys a product from the repository
+     * @param codes product codes
+     * @return returns a vector containing cash change
+     */
+    std::vector<Coins> buy(std::vector<std::string> codes, std::vector<Coins> balance);
+
+    std::vector<Coins> getCoins();
 };
 
 
