@@ -222,7 +222,7 @@ void VendingMachineUI::handleBuy(std::vector<std::string> args) {
                 products.end(),
                 [it](Product &product) {
                     return product.getCode() == it;
-                }r
+                }
         );
         if (product == products.end()) {
             throw MyException("Product with code " + it + " does not exist.");
@@ -253,7 +253,6 @@ void VendingMachineUI::handleBuy(std::vector<std::string> args) {
             balance[money]++;
             maxBalance += money;
             std::cout << "Money inserted" << std::endl;
-            std::cout << "Current balance: " << maxBalance << std::endl;
         }
         std::cout << "Current balance: " << maxBalance << std::endl;
     } while (maxBalance < total);

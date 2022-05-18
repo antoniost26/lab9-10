@@ -5,5 +5,5 @@
 6 35 mask 88.500000 58,
 75 36 candy 34.990000 28,
 28 37 cigarettes 6.990000 11,
-99 38 mountain-dew 20.000000 27,
-15 39 cotton-candy 19.990000 2,
+99 38 mountain-dew 20.000000 26,
+15 39 cotton-candy 19.990000 1,
